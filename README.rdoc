@@ -1,6 +1,19 @@
 = spell_number
 
-Description goes here.
+This is a simple gem that will allow you to convert numbers into a "written" representation. E.g. 111 becomes "onehundredeleven"
+
+== Known limitations
+
+* The code can still be DRYed up
+* At the moment, the code will only handle German and English. Other languages can be added through I18n locale files, but may
+  need additional tweaking for edge cases.
+  
+  
+== Usage
+
+At the moment, just add the gem to your Gemfile, and then do
+
+  SpellNumber.number_to_words(number, :locale => my_locale)
 
 == Contributing to spell_number
  

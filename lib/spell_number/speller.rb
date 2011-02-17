@@ -10,25 +10,17 @@ module SpellNumber
       return number_with_thousands(number) if(number < 1000000)
       
       rest = number % 1000000
-      format_subtype = case rest
-      when 0
-        'no_rest'
-      when 1..99
-        'two_digit_rest'
-      else
-        'rest'
-      end
       
       singular = ((number / 1000000) == 1)
       millions = number_with_thousands(number / 1000000)
-      rest = number_with_thousands(rest)
+      rest_in_words = number_with_thousands(rest)
       words = 'not_found'
       
-      words = I18n.t("spell_number.formats.millions_singular.#{format_subtype}", :locale => @options[:locale], 
-        :million_count => millions, :rest => rest, :default => 'not_found') if(singular)
+      words = I18n.t("spell_number.formats.millions_singular.#{format_subtype(rest)}", :locale => @options[:locale], 
+        :million_count => millions, :rest => rest_in_words, :default => 'not_found') if(singular)
         
-      words = I18n.t("spell_number.formats.millions.#{format_subtype}", :locale => @options[:locale], 
-        :million_count => millions, :rest => rest) if(words == 'not_found')
+      words = I18n.t("spell_number.formats.millions.#{format_subtype(rest)}", :locale => @options[:locale], 
+        :million_count => millions, :rest => rest_in_words) if(words == 'not_found')
         
       words
     end
@@ -39,19 +31,11 @@ module SpellNumber
       return three_digit_number(number, combined) if(number < 1000)
       
       rest = number % 1000
-      format_subtype = case rest
-      when 0
-        'no_rest'
-      when 1..99
-        'two_digit_rest'
-      else
-        'rest'
-      end
       
       thousands = three_digit_number(number / 1000, true)
-      rest = three_digit_number(rest)
-      I18n.t("spell_number.formats.thousands.#{format_subtype}", :locale => @options[:locale], 
-        :thousand_count => thousands, :rest => rest)
+      rest_in_words = three_digit_number(rest)
+      I18n.t("spell_number.formats.thousands.#{format_subtype(rest)}", :locale => @options[:locale], 
+        :thousand_count => thousands, :rest => rest_in_words)
     end
 
     def three_digit_number(number, combined = false)
@@ -89,6 +73,17 @@ module SpellNumber
     # Transforms a single-digit number between 0 and 19
     def simple_number_to_words(number)
       I18n.t("spell_number.numbers.number_#{number}", :locale => @options[:locale], :default => 'not_found')
+    end
+    
+    def format_subtype(rest)
+      case rest
+      when 0
+        'no_rest'
+      when 1..99
+        'two_digit_rest'
+      else
+        'rest'
+      end
     end
   
   end
