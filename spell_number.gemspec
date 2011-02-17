@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{spell_number}
-  s.version = ""
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Hahn"]
@@ -23,12 +23,14 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "VERSION",
     "lib/spell_number.rb",
     "lib/spell_number/speller.rb",
     "locales/de.yml",
     "locales/en.yml",
     "spec/number_to_spell_de_spec.rb",
-    "spec/number_to_spell_spec.rb"
+    "spec/number_to_spell_spec.rb",
+    "spell_number.gemspec"
   ]
   s.homepage = %q{http://github.com/betterplace/spell_number}
   s.licenses = ["MIT"]
