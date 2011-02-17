@@ -8,121 +8,87 @@ module SpellNumber
     
     def number_to_words(number)
       return number_with_thousands(number) if(number < 1000000)
+      
       rest = number % 1000000
-      words = number_with_thousands(number / 1000000) << ' million'
-      if(rest < 100 && rest != 0)
-        words << ' and ' << two_digit_number(rest)
-      elsif(rest != 0)
-        words << ', ' << number_with_thousands(rest)
+      format_subtype = case rest
+      when 0
+        'no_rest'
+      when 1..99
+        'two_digit_rest'
+      else
+        'rest'
       end
+      
+      singular = ((number / 1000000) == 1)
+      millions = number_with_thousands(number / 1000000)
+      rest = number_with_thousands(rest)
+      words = 'not_found'
+      
+      words = I18n.t("spell_number.formats.millions_singular.#{format_subtype}", :locale => @options[:locale], 
+        :million_count => millions, :rest => rest, :default => 'not_found') if(singular)
+        
+      words = I18n.t("spell_number.formats.millions.#{format_subtype}", :locale => @options[:locale], 
+        :million_count => millions, :rest => rest) if(words == 'not_found')
+        
       words
     end
 
     protected
 
-    def number_with_thousands(number)
-      return three_digit_number(number) if(number < 1000)
+    def number_with_thousands(number, combined = false)
+      return three_digit_number(number, combined) if(number < 1000)
+      
       rest = number % 1000
-      words = "#{three_digit_number(number / 1000)} thousand"
-      if(rest < 100 && rest != 0)
-        words << ' and ' << two_digit_number(rest)
-      elsif(rest != 0)
-        words << ', ' << three_digit_number(rest) 
+      format_subtype = case rest
+      when 0
+        'no_rest'
+      when 1..99
+        'two_digit_rest'
+      else
+        'rest'
       end
-      words
+      
+      thousands = three_digit_number(number / 1000, true)
+      rest = three_digit_number(rest)
+      I18n.t("spell_number.formats.thousands.#{format_subtype}", :locale => @options[:locale], 
+        :thousand_count => thousands, :rest => rest)
     end
 
-    def three_digit_number(number)
+    def three_digit_number(number, combined = false)
       if(number < 100)
-        two_digit_number(number)
+        two_digit_number(number, combined)
       else
         rest = number % 100
-        words = "#{simple_number_to_words(number / 100)} hundred"
-        words << ' and ' << two_digit_number(rest) if(rest != 0)
-        words
+        format = "spell_number.formats.hundreds.#{rest == 0 ? 'no_rest' : 'rest'}"
+        hundreds = simple_number_to_words_combined(number / 100)
+        rest = two_digit_number(rest)
+        I18n.t(format, :locale => @options[:locale], :hundred_count => hundreds, :rest => rest)
       end
     end
 
     # Transforms a two-digit number from 0 to 99
-    def two_digit_number(number)
-      if(number < 20)
-        simple_number_to_words(number)
-      else
-        rest = number % 10
-        words = tens_to_words(number - rest)
-        words << '-' << simple_number_to_words(rest) if(rest != 0)
-        words
-      end
+    def two_digit_number(number, combined = false)
+      words = combined ? simple_number_to_words_combined(number) : simple_number_to_words(number)
+      return words if(words != 'not_found')
+      
+      rest = number % 10
+      format = "spell_number.formats.tens.#{rest == 0 ? 'no_rest' : 'rest'}"
+      first_digit = simple_number_to_words(number - rest)
+      second_digit = simple_number_to_words_combined(rest)
+      I18n.t(format, :locale => @options[:locale], :first_digit => first_digit, :second_digit => second_digit)
     end
 
-    # This works for numbers 10, 20, 30, ...
-    def tens_to_words(number)
-      case number
-      when 10
-        'ten'
-      when 20
-        'twenty'
-      when 30
-        'thirty'
-      when 40
-        'fourty'
-      when 50
-        'fifty'
-      when 60
-        'sixty'
-      when 70
-        'seventy'
-      when 80
-        'eighty'
-      when 90
-        'ninety'
-      end
+    # Returns the "combined" number if it exists in the file, otherwise it will return the 
+    # simple_number_to_words
+    def simple_number_to_words_combined(number)
+      words = I18n.t("spell_number.numbers.number_#{number}_combined", :locale => @options[:locale], :default => 'not_found')
+      words = simple_number_to_words(number) if(words == 'not_found')
+      words
     end
 
     # Transforms a single-digit number between 0 and 19
     def simple_number_to_words(number)
-      case number
-      when 0
-        'zero'
-      when 1
-        'one'
-      when 2
-        'two'
-      when 3
-        'three'
-      when 4
-        'four'
-      when 5
-        'five'
-      when 6
-        'six'
-      when 7
-        'seven'
-      when 8
-        'eight'
-      when 9
-        'nine'
-      when 10
-        'ten'
-      when 11
-        'eleven'
-      when 12
-        'twelve'
-      when 13
-        'thirteen'
-      when 14
-        'fourteen'
-      when 15
-        'fifteen'
-      when 16
-        'sixteen'
-      when 17
-        'seventeen'
-      when 18
-        'eighteen'
-      when 19
-        'nineteen'
-      end
+      I18n.t("spell_number.numbers.number_#{number}", :locale => @options[:locale], :default => 'not_found')
     end
   
   end

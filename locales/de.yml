@@ -1,0 +1,51 @@
+de:
+  spell_number:
+    numbers:
+      number_1: eins
+      number_1_combined: ein
+      number_2: zwei
+      number_3: drei
+      number_4: vier
+      number_5: fünf
+      number_6: sechs
+      number_7: sieben
+      number_8: acht
+      number_9: neun
+      number_10: zehn
+      number_11: elf
+      number_12: zwölf
+      number_13: dreizehn
+      number_14: vierzehn
+      number_15: fünfzehn
+      number_16: sechzehn
+      number_17: siebzehn
+      number_18: achtzehn
+      number_19: neunzehn
+      number_20: zwanzig
+      number_30: dreissig
+      number_40: vierzig
+      number_50: fünfzig
+      number_60: sechzig
+      number_70: siebzig
+      number_80: achtzig
+      number_90: neunzig
+      number_0: "null"
+    formats:
+      tens:
+        no_rest: "%{first_digit}"
+        rest: "%{second_digit}und%{first_digit}"
+      hundreds:
+        no_rest: "%{hundred_count}hundert"
+        rest: "%{hundred_count}hundert%{rest}"
+      thousands:
+        no_rest: "%{thousand_count}tausend"
+        two_digit_rest: "%{thousand_count}tausend%{rest}"
+        rest: "%{thousand_count}tausend%{rest}"
+      millions_singular:
+        no_rest: "eine Million"
+        two_digit_rest: "eine Million und %{rest}"
+        rest: "eine Million und %{rest}"
+      millions:
+        no_rest: "%{million_count} Millionen"
+        two_digit_rest: "%{million_count} Millionen und %{rest}"
+        rest: "%{million_count} Millionen und %{rest}"

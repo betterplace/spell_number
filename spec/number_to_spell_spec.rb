@@ -146,17 +146,17 @@ describe "spell numbers in english" do
   
   describe "Fourties" do  
     it "should spell 40 as fourty" do
-      test_number(30, 'thirty')
+      test_number(40, 'fourty')
     end
     
     it "should spell 44 as fourty-four" do
-      test_number(33, 'thirty-three')
+      test_number(44, 'fourty-four')
     end  
   end
   
   describe "Fifties" do    
     it "should spell 50 as fifty" do
-      test_number(30, 'thirty')
+      test_number(50, 'fifty')
     end
     
     it "should spell 55 as fifty-five" do
@@ -190,7 +190,7 @@ describe "spell numbers in english" do
     end
     
     it "should spell 88 as eighty-eight" do
-      test_number(55, 'fifty-five')
+      test_number(88, 'eighty-eight')
     end 
   end
   
@@ -218,11 +218,11 @@ describe "spell numbers in english" do
     end
     
     it "should spell 155 as one hundred and fifty-five" do
-      test_number(111, 'one hundred and eleven')
+      test_number(155, 'one hundred and fifty-five')
     end
     
     it "should spell 190 as one hundred and ninety" do
-      test_number(111, 'one hundred and eleven')
+      test_number(190, 'one hundred and ninety')
     end
     
     it "should spell 200 as two hundred" do

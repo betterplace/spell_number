@@ -1,0 +1,47 @@
+en:
+  spell_number:
+    numbers:
+      number_1: one
+      number_2: two
+      number_3: three
+      number_4: four
+      number_5: five
+      number_6: six
+      number_7: seven
+      number_8: eight
+      number_9: nine
+      number_10: ten
+      number_11: eleven
+      number_12: twelve
+      number_13: thirteen
+      number_14: fourteen
+      number_15: fifteen
+      number_16: sixteen
+      number_17: seventeen
+      number_18: eighteen
+      number_19: nineteen
+      number_20: twenty
+      number_30: thirty
+      number_40: fourty
+      number_50: fifty
+      number_60: sixty
+      number_70: seventy
+      number_80: eighty
+      number_90: ninety
+      number_0: zero
+    formats:
+      tens:
+        no_rest: "%{first_digit}"
+        rest: "%{first_digit}-%{second_digit}"
+      hundreds:
+        no_rest: "%{hundred_count} hundred"
+        rest: "%{hundred_count} hundred and %{rest}"
+      thousands:
+        no_rest: "%{thousand_count} thousand"
+        two_digit_rest: "%{thousand_count} thousand and %{rest}"
+        rest: "%{thousand_count} thousand, %{rest}"
+      millions:
+        no_rest: "%{million_count} million"
+        two_digit_rest: "%{million_count} million and %{rest}"
+        rest: "%{million_count} million, %{rest}"
+        
