@@ -13,11 +13,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "spell_number"
-  gem.homepage = "http://github.com/averell23/spell_number"
+  gem.homepage = "http://github.com/betterplace/spell_number"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "dha@betterplace.org"
+  gem.summary = "Spell numbers as words"
+  gem.description = "Simple Gem to spell numbers as words"
+  gem.email = "developers@betterplace.org"
   gem.authors = ["Daniel Hahn"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
@@ -32,8 +32,8 @@ RSpec::Core::RakeTask.new(:spec)
 
 require 'rcov/rcovtask'
 Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.libs << 'rspec'
+  test.pattern = 'spec/**/*_spec.rb'
   test.verbose = true
 end
 
