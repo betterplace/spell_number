@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spell_number'
 
 describe "spell numbers in german" do  
