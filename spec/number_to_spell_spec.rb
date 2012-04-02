@@ -43,7 +43,7 @@ describe "spell numbers in english" do
       test_number(9, 'nine')
     end
   
-    it "should transform 10" do
+    it "should transform 0" do
       test_number(0, 'zero')
     end
   end
@@ -285,7 +285,7 @@ describe "spell numbers in english" do
     end
     
     it "should spell 1.000.111 as one million, one hundred and eleven" do
-      test_number(1000000, 'one million')
+      test_number(1000111, 'one million, one hundred and eleven')
     end
     
     it "should spell 1.001.111 as one million, one thousand, one hundred and eleven" do

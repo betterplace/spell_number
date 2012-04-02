@@ -44,7 +44,7 @@ describe "spell numbers in german" do
       test_number(9, 'neun')
     end
   
-    it "should transform 10" do
+    it "should transform 0" do
       test_number(0, 'null')
     end
   end
