@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{spell_number}
-  s.version = "0.0.1"
+  s.name = "spell_number"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Hahn"]
-  s.date = %q{2011-02-17}
-  s.description = %q{Simple Gem to spell numbers as words}
-  s.email = %q{developers@betterplace.org}
+  s.date = "2012-04-19"
+  s.description = "Simple Gem to spell numbers as words"
+  s.email = "developers@betterplace.org"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -32,18 +32,17 @@ Gem::Specification.new do |s|
     "spec/number_to_spell_spec.rb",
     "spell_number.gemspec"
   ]
-  s.homepage = %q{http://github.com/betterplace/spell_number}
+  s.homepage = "http://github.com/betterplace/spell_number"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Spell numbers as words}
+  s.rubygems_version = "1.8.17"
+  s.summary = "Spell numbers as words"
   s.test_files = [
     "spec/number_to_spell_de_spec.rb",
     "spec/number_to_spell_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
