@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    spell_number (0.2.1)
-      i18n (~> 1.0.0)
+    spell_number (0.2.2)
+      i18n
 
 GEM
   remote: https://rubygems.org/
